@@ -5,16 +5,27 @@ import { cloudinaryConfig } from 'react-cloudinary';
 import AppHeader from '../components/AppHeader';
 import AppSidebar from '../components/AppSidebar';
 
-cloudinaryConfig({ cloud_name: 'linkshops', crop: 'limit' });
-
+const _ = require('lodash');
 require('../stylesheets/app.scss');
+
+cloudinaryConfig({ cloud_name: 'linkshops', crop: 'limit' });
 
 const App = React.createClass({
   propTypes: {
+    auth: PropTypes.object,
     children: PropTypes.node,
+    params: PropTypes.object,
   },
   contextTypes: {
     router: PropTypes.object.isRequired,
+  },
+  childContextTypes: {
+    brand: PropTypes.object,
+  },
+  getChildContext() {
+    const { auth, params: { brandId } } = this.props;
+    const brand = _.find(auth.roles, (role) => _.get(role, 'brand.id').toString() === brandId);
+    return { brand };
   },
   componentDidMount() {
   },
@@ -36,4 +47,5 @@ const App = React.createClass({
 });
 
 export default connect(
+  (state) => ({ auth: state.auth })
 )(App);
