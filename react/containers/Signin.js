@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { authActions } from 'goommerce-redux';
 
+require('../stylesheets/signin.scss');
+
 const Signin = React.createClass({
   propTypes: {
     login: PropTypes.func.isRequired,
