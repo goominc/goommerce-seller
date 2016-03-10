@@ -31,7 +31,7 @@ module.exports = (opts) => {
   middlewares.push((req, res) => {
     const cdn = `//${config.cloudfront.domain}`;
     function path(name) {
-      if (opts.hot || opts.localBundle) return `/${name}`;
+      if (opts.hot || opts.localBundle) return `/s/${name}`; // FIXME: '/s'
       return `//${config.cloudfront.domain}/app/${config.bundle.version}/${name}`;
     }
 
@@ -57,7 +57,7 @@ module.exports = (opts) => {
             <script src="${cdn}/vendor/jquery-1.11.3.min.js"></script>
             <script src="${cdn}/vendor/bootstrap-3.3.6/js/bootstrap.min.js"></script>
             <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};</script>
-            <script src="${path('app.bundle.js')}"></script>
+            <script src="${path('seller.bundle.js')}"></script>
           </body>
         </html>
       `);

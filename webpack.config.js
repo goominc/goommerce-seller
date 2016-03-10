@@ -18,7 +18,7 @@ babelLoaderQuery.extra['react-transform'] = {
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
-    app: [
+    seller: [
       'webpack-hot-middleware/client',
       './react/client',
     ],

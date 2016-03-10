@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   devtool: 'source-map',
   entry: {
-    app: [
+    seller: [
       './react/client.js',
     ],
   },
