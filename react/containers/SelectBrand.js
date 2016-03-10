@@ -29,7 +29,7 @@ const SelectBrand = React.createClass({
               <h4 className="modal-title" id="myModalLabel">Select brand</h4>
             </div>
             <div className="modal-body">
-              <select ref="brand">
+              <select className="form-control" ref="brand">
                 {brands.map((b, idx) => (<option key={idx} value={b.id}>{b.id}</option>))}
               </select>
             </div>
