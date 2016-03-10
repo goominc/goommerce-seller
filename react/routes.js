@@ -2,6 +2,7 @@ import React from 'react';
 import { IndexRedirect, Route } from 'react-router';
 import App from './containers/App';
 import OrderList from './containers/OrderList';
+import OrderStats from './containers/OrderStats';
 import SelectBrand from './containers/SelectBrand';
 import Signin from './containers/Signin';
 
@@ -27,7 +28,8 @@ export default function configure({ getAuth }) {
       <Route onEnter={redirectToLogin}>
         <Route component={App} path="/brands/:brandId">
           <IndexRedirect to="orders" />
-          <Route component={OrderList} path="orders" />
+          <Route component={OrderStats} path="orders" />
+          <Route component={OrderList} path="orders/:date" />
         </Route>
         <Route component={SelectBrand} path="/" onEnter={redirectToDefault} />
       </Route>

@@ -19,14 +19,6 @@ const App = React.createClass({
   contextTypes: {
     router: PropTypes.object.isRequired,
   },
-  childContextTypes: {
-    brand: PropTypes.object,
-  },
-  getChildContext() {
-    const { auth, params: { brandId } } = this.props;
-    const brand = _.find(auth.roles, (role) => _.get(role, 'brand.id').toString() === brandId);
-    return { brand };
-  },
   componentDidMount() {
   },
   render() {
