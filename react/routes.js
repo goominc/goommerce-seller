@@ -11,7 +11,7 @@ const _ = require('lodash');
 export default function configure({ getAuth }) {
   function redirectToLogin(nextState, replace) {
     if (!getAuth().bearer) {
-      replace('/signin');
+      replace('/s/signin');
     }
   }
 
@@ -19,21 +19,21 @@ export default function configure({ getAuth }) {
     const brands = _.filter(getAuth().roles,
       (r) => r.type === 'owner' || r.type === 'staff').map((r) => r.brand);
     if (brands.length === 1) {
-      replace(`/brands/${brands[0].id}/orders`);
+      replace(`/s/brands/${brands[0].id}/orders`);
     }
   }
 
   return (
     <Route>
       <Route onEnter={redirectToLogin}>
-        <Route component={App} path="/brands/:brandId">
+        <Route component={App} path="/s/brands/:brandId">
           <IndexRedirect to="orders" />
           <Route component={OrderStats} path="orders" />
           <Route component={OrderList} path="orders/:date" />
         </Route>
-        <Route component={SelectBrand} path="/" onEnter={redirectToDefault} />
+        <Route component={SelectBrand} path="/s" onEnter={redirectToDefault} />
       </Route>
-      <Route component={Signin} path="/signin" />
+      <Route component={Signin} path="/s/signin" />
     </Route>
   );
 }

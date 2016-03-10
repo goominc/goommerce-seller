@@ -10,11 +10,14 @@ const OrderStats = React.createClass({
     stats: PropTypes.array,
     loadBrandOrderStats: PropTypes.func.isRequired,
   },
+  contextTypes: {
+    baseUrl: PropTypes.string.isRequired,
+  },
   componentDidMount() {
     this.props.loadBrandOrderStats(this.props.brandId);
   },
   render() {
-    const { brandId, stats = [] } = this.props;
+    const { stats = [] } = this.props;
     return (
       <div>
         <h1 className="page-header">Order Stats</h1>
@@ -30,7 +33,7 @@ const OrderStats = React.createClass({
               {stats.map((s, idx) => (
                 <tr key={idx}>
                   <td>
-                    <Link to={`/brands/${brandId}/orders/${s.date.substr(0, 10)}`}>{s.date.substr(0, 10)}</Link>
+                    <Link to={`${this.context.baseUrl}/orders/${s.date.substr(0, 10)}`}>{s.date.substr(0, 10)}</Link>
                   </td>
                   <td>{s.count}</td>
                 </tr>

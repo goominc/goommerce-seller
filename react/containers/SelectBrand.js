@@ -15,7 +15,7 @@ const SelectBrand = React.createClass({
   },
   handleSelect() {
     const { router } = this.context;
-    router.push(`/brands/${this.refs.brand.value}`);
+    router.push(`/s/brands/${this.refs.brand.value}`);
   },
   render() {
     const { auth } = this.props;

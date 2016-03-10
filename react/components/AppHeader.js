@@ -2,12 +2,7 @@ import React, { PropTypes } from 'react';
 
 export default React.createClass({
   propTypes: {
-    children: PropTypes.node,
-  },
-  contextTypes: {
-    router: PropTypes.object.isRequired,
-  },
-  componentDidMount() {
+    auth: PropTypes.object,
   },
   render() {
     return (

@@ -5,7 +5,6 @@ import { cloudinaryConfig } from 'react-cloudinary';
 import AppHeader from '../components/AppHeader';
 import AppSidebar from '../components/AppSidebar';
 
-const _ = require('lodash');
 require('../stylesheets/app.scss');
 
 cloudinaryConfig({ cloud_name: 'linkshops', crop: 'limit' });
@@ -14,12 +13,13 @@ const App = React.createClass({
   propTypes: {
     auth: PropTypes.object,
     children: PropTypes.node,
-    params: PropTypes.object,
+    params: PropTypes.object.isRequired,
   },
-  contextTypes: {
-    router: PropTypes.object.isRequired,
+  childContextTypes: {
+    baseUrl: PropTypes.string.isRequired,
   },
-  componentDidMount() {
+  getChildContext() {
+    return { baseUrl: `/s/brands/${this.props.params.brandId}` };
   },
   render() {
     return (

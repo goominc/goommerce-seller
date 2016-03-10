@@ -16,7 +16,7 @@ const Signin = React.createClass({
     e.preventDefault();
     const { email, password } = this.refs;
     this.props.login(email.value, password.value).then(
-      () => this.context.router.push('/'),
+      () => this.context.router.push('/s'),
       () => alert('Invalid username/password.') // eslint-disable-line no-alert
     );
   },
