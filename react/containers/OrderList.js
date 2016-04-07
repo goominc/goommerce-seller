@@ -25,7 +25,7 @@ const OrderList = React.createClass({
               <tr>
                 <th>#</th>
                 <th>Unit Price(KRW)</th>
-                <th>Count</th>
+                <th>Quantity</th>
                 <th>Total(KRW)</th>
                 <th>Total(USD)</th>
               </tr>
@@ -35,7 +35,7 @@ const OrderList = React.createClass({
                 <tr key={idx}>
                   <td>{o.id}</td>
                   <td>{o.KRW}</td>
-                  <td>{o.orderedCount}</td>
+                  <td>{o.quantity}</td>
                   <td>{o.totalKRW}</td>
                   <td>{o.totalUSD}</td>
                 </tr>
